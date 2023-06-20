@@ -1,0 +1,51 @@
+Vim is a text editor, but it is also a language for interacting with text!
+There are two popular ways to interact with text, "vim-like", "emacs-like".
+
+"emacs-like" uses modifier keys to differentiate between text being inserted, and commands being issued.
+    For example: control-a to go to the beginning of a line, controle-e to go to the end of a line, alt-f to go forward a word, alt-b to go back a word.
+"emacs-like" is popular for line editing.
+    For example: bash uses emacs-like commands by default.
+
+"vim-like" uses modes to differentiate between text being inserted, and commands being issued.
+    For example: in "normal" mode, 0 to go to the beginning of a line, $ to go to the end, w to go forward a word, b to go back a word.
+"vim-like" is popular for navigating text.
+    For example: the "less" pager uses vim-like commands by default.
+
+There are 4 vim modes to be aware of: normal, insert, command, visual.
+
+    normal mode: keystrokes are interpreted as motions, verbs, and modifiers.
+        "delete two characters" 2dl
+        "forward five characters" 5l
+
+    insert mode: keystrokes are inserted as text.
+        Typing "hello" inserts "hello".
+
+    command mode: used to issue commands to vim. Edit a file (e), list buffers (ls), etc.
+
+    visual mode: an extra layer on normal mode, helpful for visualizing yanking (copying) and deleting text.
+
+    To go from normal mode to insert mode, press "i", "I", "a", "A", "o", or "O".
+    To go from insert mode to normal mode, press "Esc".
+    To go from normal mode to command mode, press ":".
+    To go from normal mode to visual mode, press "v".
+
+How to learn!
+    Start writing something! Everytime you get stuck use google, help pages, or a cheatsheet.
+        "I want to go to the beginning of the document, looks like its 'gg', I will use that from now on."
+        Say the motions as you use them to help remember!
+    Use a game or interactive tutor: vimtutor, https://vim-adventures.com/.
+
+Beginner advice!
+    Don't copy somebody else's vimrc! Use it for inspiration, but add things one-at-a-time only as you need and understand them.
+    Don't add plugins! Use the built-in tools like omnicomplete & spellcheck.
+        Plugins are powerful, but don't get carried away! For example, I mostly use only 2 plugins (vim-tbone & vim-foldsearch).
+
+Concepts to learn, or sometimes just be aware of!
+    buffers: how to edit (:e), write (:w), list (:ls) , switch (:e 0), delete (:bd), and quit (:q).
+    macros: how to record a macro to a register (qw stores a macro to the 'w' register). How to use a macro in insert mode (@w) or in command mode (normal @w).
+    insert mode escapes: how to insert a register when in insert mode (ctrl-r), how to insert a character literally (ctrl-v).
+    helpful commands: ":set syntax=html" to use html syntax. ":help" to use help pages. ":set spell" to turn on spellcheck, ":set nospell" to turn it off.
+    vimdiff for side by side diffing and editing!
+    folds to hide or show lines!
+
+This talk was given for SLO County Coders, at StoryLabs San Luis Obispo, on Feb 20th 2023.
