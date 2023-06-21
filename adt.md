@@ -3,21 +3,21 @@
     - A type might be semantic (cat, keyboard model, coffee shop), a digital representation (ieee float, integer 8, binary exchange), and likely other things.
     - Type systems are composed of types, and rules that apply to those types.
     1. Basic function header example:
-    {{{@begin=ocaml@
+    ```ocaml
         let pay = fun (cafe: cafe) (patron: patron) :transaction -> (* implementation left out! *)
         (* val pay : cafe -> patron -> transaction = <fun> *)
-    @end=ocaml@}}}
+    ```
     2. Type parameter examples (they're like arguments but for types!):
-    {{{@begin=ocaml@
+    ```ocaml
         (* example of a type parameter in a function header *)
         let noop = fun (x: 'a) : 'a -> x;;
         (* example of a type parameter used in a type definition *)
         type 'a box = 'a
         let foo : int box = 1
         let bar : float box = 1.0
-    @end=ocaml@}}}
+    ```
     3. Example of a contrived, very basic, type system:
-    {{{@begin=ocaml@
+    ```ocaml
         module type Currency = sig
             val convert : float -> float (* defines the interface *)
         end
@@ -35,33 +35,33 @@
         val f1 : float = 10.
         val f2 : float = 12.
         *)
-    @end=ocaml@}}}
+    ```
 
 # Composite Types (also called algebraic data types):
     - Tuple: Finite ordered list.
     - Enum: A value restricted to "one-of" multiple types.
     - Tuple's can be composed of sub-types!
-    {{{@begin=ocaml@
+    ```ocaml
         type transaction =
             {currency  : string;
              rate      : float;
              amount    : float;
              timestamp : int}
-    @end=ocaml@}}}
+    ```
     - Enum's can be pattern matched against!
-    {{{@begin=ocaml@
+    ```ocaml
         type pet = Cat | Dog | Fish
         let my_pet : pet = Cat
         let noise = match my_pet with
             | Cat -> "meow"
             | Dog -> "ruff"
-            | _ -> "glub"
+            | Fish -> "glub"
         (* val noise : string = "meow" *)
-    @end=ocaml@}}}
+    ```
 
 # Cool Tuple Stuff (also called relational algebra, or SQL)
     - Cartesian products: they enumerate tuples into collections.
-    {{{@begin=sql@
+    ```sql
         with foo as (
             values (1,2),(3,4)
         ),
@@ -70,13 +70,13 @@
         )
         select * from foo,bar;
 
-        1|2|b|c
-        1|2|d|e
-        3|4|b|c
-        3|4|d|e
-    @end=sql@}}}
+        -- 1|2|b|c
+        -- 1|2|d|e
+        -- 3|4|b|c
+        -- 3|4|d|e
+    ```
     - inner-joins: reduces the cartesian-product collection by specifying relationships that satisfy a constraint (in this case, indices that are equal).
-    {{{@begin=sql@
+    ```sql
         with foo as (
             values ("a",2),("b",4)
         ),
@@ -85,17 +85,18 @@
         )
         select * from foo,bar where foo."a" = bar."a";
 
-        a|2|a|3
-        a|2|a|4
-    @end=sql@}}}
+        -- a|2|a|3
+        -- a|2|a|4
+    ```
     - group-bys: aggregates a table by specifying indices that form a unique subset, and applying an aggregation function to the unincluded indices (in this case, summing).
-    {{{@begin=sql@
+    ```sql
         with foo as (
             values (1,0),(1,1),(1,2)
         )
         select foo.column1, sum(foo.column2) from foo group by foo.column1;
-        1|3
-    @end=sql@}}}
+
+        -- 1|3
+    ```
 
 # Cool Array Stuff (also called array theory)
     - Arrays are made of a shape, and a ravel.
@@ -103,7 +104,7 @@
     - The ravel is a list of numbers, with a length equal to the axis lengths multiplied together.
     - The rank is the length of the shape.
     - example in BQN (funny symbols ahead):
-    {{{@begin=bqn@
+    ```bqn
            foo ← 3‿3⥊↕9 # Some rank-2 array
         # ┌─
         # ╵ 0 1 2
@@ -119,10 +120,10 @@
 
            ≢≢foo # Rank
         ⟨ 2 ⟩
-    @end=bqn@}}}
+    ```
     - Functions like indicing, reducing (also called folding), or scanning (also called the running-tally), can be applied to arrays at different ranks.
     - more examples in BQN:
-    {{{@begin=bqn@
+    ```bqn
            1‿0⊑foo # Index by counting up the primary axis
         3
 
@@ -141,6 +142,6 @@
         #   3  7 12
         #   6 13 21
         #           ┘
-    @end=bqn@}}}
+    ```
 
 This talk was given for SLO County Coders, at StoryLabs San Luis Obispo, on June 19th 2023.
