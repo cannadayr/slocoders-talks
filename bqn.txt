@@ -1,4 +1,4 @@
-# A programming language for your flying saucer
+# BQN, a programming language for your flying saucer!
 #           ________________
 #          /                \
 #         /        A__A      \
@@ -17,7 +17,7 @@
 #  \             I\FF/ I            /
 #   \ (]         I F \/         [) /
 #    \____________________________/
-# Art by Wezl
+# Wezl, CC-BY 4.0
 
 # Add
    1+1
@@ -40,11 +40,11 @@
 ⟨ 10 20 30 ⟩
 
 # Leading Axis Agreement
-   [1‿0,0‿1,1‿0]×[1‿2,3‿4,5‿6]
+   1‿0‿1×[1‿2,3‿4,5‿6]
 ┌─
-╵ 1 0
-  0 4
-  5 0
+╵ 1 2
+  0 0
+  5 6
       ┘
 
 # Fold
@@ -76,24 +76,28 @@
         ┘
 
 # Under
-   1 +⌾√ 9
-16
+   4 +⌾√ 9
+25
 
 # Structural Under
    10⊸×⌾(0‿1‿0⊸/) 1‿2‿3
 ⟨ 1 20 3 ⟩
 
-# Atop
+# 2-Train
    ¯1‿¯2‿¯4 (÷-) 1‿2‿4
 ⟨ ¯0.5 ¯0.25 ¯0.125 ⟩
 
-# Fork
+# 3-Train
    (⌽≡⊢) 0‿1‿1‿0‿1‿1‿0
 1
 
+# Nothing
+   ¯1‿¯2‿¯4 (+´·÷-) 1‿2‿4
+¯0.875
+
 # Block
-   3 {𝕨÷𝕩} 2
-1.5
+   3 ÷{𝔾𝕨𝔽𝕩}- 2
+¯1.5
 
 # Destructure
    {𝕊a‿b:a+b}1‿2
@@ -132,5 +136,8 @@ https://mlochbaum.github.io/BQN/index.html
 https://mlochbaum.github.io/BQN/editors/index.html
 https://mlochbaum.github.io/BQN/fonts.html
 https://mlochbaum.github.io/BQN/keymap.html
+https://mlochbaum.github.io/BQN/doc/syntax.html
+https://mlochbaum.github.io/BQN/doc/tacit.html
+https://mlochbaum.github.io/BQN/doc/primitive.html
 https://mlochbaum.github.io/BQN/tutorial/index.html
-https://mlochbaum.github.io/BQN/doc/tacit.html#combinators
+https://mlochbaum.github.io/BQN/community/index.html
